@@ -67,15 +67,15 @@ def app():
             'WIND-SPEED AT 10M'])
         if pilihan_dimensi == 'CLIMATE WATER DEFICIT':
             var_dimensi = 'def'
-            var_color = 'Haline'
+            var_color = 'PuBu'
             var_range_color = [1,100]
         elif pilihan_dimensi == 'PALMER DROUGHT SAVERITY INDEX':
             var_dimensi = 'pdsi'
-            var_color = 'YlOrBr'
+            var_color = 'turbid'
             var_range_color = [0,100]
         elif pilihan_dimensi == 'PRECIPITATION ACCUMULATION':
             var_dimensi = 'pr'
-            var_color = 'PuBu'
+            var_color = 'haline'
             var_range_color = [0,100]
         elif pilihan_dimensi == 'SOIL MOISTURE':
             var_dimensi = 'soil'
@@ -83,23 +83,23 @@ def app():
             var_range_color = [0,100]
         elif pilihan_dimensi == 'SNOW WATER EQUIVALENT':
             var_dimensi = 'swe'
-            var_color = 'dense'
+            var_color = 'ice'
             var_range_color = [0,100]
         elif pilihan_dimensi == 'MINIMUM TEMPERATURE':
             var_dimensi = 'tmmn'
-            var_color = 'dense'
+            var_color = 'Reds'
             var_range_color = [0,100]
         elif pilihan_dimensi == 'MAXIMUM TEMPERATURE':
             var_dimensi = 'tmmx'
-            var_color = 'dense'
+            var_color = 'Reds'
             var_range_color = [0,100]
         elif pilihan_dimensi == 'VAPOR PRESSURE':
             var_dimensi = 'vap'
-            var_color = 'dense'
+            var_color = 'Sunset'
             var_range_color = [0,100]
         elif pilihan_dimensi == 'WIND-SPEED AT 10M':
             var_dimensi = 'vs'
-            var_color = 'dense'
+            var_color = 'Teal'
             var_range_color = [0,100]
 
     # st.write(indo_prov.columns)
