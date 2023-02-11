@@ -18,7 +18,7 @@ def app():
             in the selected region.')
 
 
-    indo = gpd.read_file('SHP NEPAL/Nepal LC Grid/LANDCOVER DISTRICT NEPAL GRID.shp')
+    indo = gpd.read_file('SHP NEPAL/Nepal Weather Grid/WEATHER DISTRICT NEPAL GRID.shp')
 
     pil_c1, pil_c2, pil_c3 = st.columns(3)
 
@@ -56,23 +56,53 @@ def app():
         zoom = 12.7 - np.log(max_bound)
 
     with pil_c3:
-        pilihan_dimensi = st.selectbox('Select Dimension.', ['NDVI'])
-        if pilihan_dimensi == 'NDVI':
-            var_dimensi = 'NDVI'
+        pilihan_dimensi = st.selectbox('Select Dimension.', ['CLIMATE WATER DEFICIT',
+            'PALMER DROUGHT SAVERITY INDEX',
+            'PRECIPITATION ACCUMULATION',
+            'SOIL MOISTURE',
+            'SNOW WATER EQUIVALENT',
+            'MINIMUM TEMPERATURE',
+            'MAXIMUM TEMPERATURE',
+            'VAPOR PRESSURE',
+            'WIND-SPEED AT 10M'])
+        if pilihan_dimensi == 'CLIMATE WATER DEFICIT':
+            var_dimensi = 'def'
             var_color = 'Haline'
             var_range_color = [1,100]
-        # elif pilihan_dimensi == 'ADAPTIVE':
-        #     var_dimensi = 'adap_index'
-        #     var_color = 'YlOrBr'
-        #     var_range_color = [0,100]
-        # elif pilihan_dimensi == 'EXPOSURE':
-        #     var_dimensi = 'expo_index'
-        #     var_color = 'PuBu'
-        #     var_range_color = [0,100]
-        # elif pilihan_dimensi == 'SENSITIVITY':
-        #     var_dimensi = 'sensi_inde'
-        #     var_color = 'dense'
-        #     var_range_color = [0,100]
+        elif pilihan_dimensi == 'PALMER DROUGHT SAVERITY INDEX':
+            var_dimensi = 'pdsi'
+            var_color = 'YlOrBr'
+            var_range_color = [0,100]
+        elif pilihan_dimensi == 'PRECIPITATION ACCUMULATION':
+            var_dimensi = 'pr'
+            var_color = 'PuBu'
+            var_range_color = [0,100]
+        elif pilihan_dimensi == 'SOIL MOISTURE':
+            var_dimensi = 'soil'
+            var_color = 'dense'
+            var_range_color = [0,100]
+        elif pilihan_dimensi == 'SNOW WATER EQUIVALENT':
+            var_dimensi = 'swe'
+            var_color = 'dense'
+            var_range_color = [0,100]
+        elif pilihan_dimensi == 'MINIMUM TEMPERATURE':
+            var_dimensi = 'tmmn'
+            var_color = 'dense'
+            var_range_color = [0,100]
+        elif pilihan_dimensi == 'MAXIMUM TEMPERATURE':
+            var_dimensi = 'tmmx'
+            var_color = 'dense'
+            var_range_color = [0,100]
+        elif pilihan_dimensi == 'VAPOR PRESSURE':
+            var_dimensi = 'vap'
+            var_color = 'dense'
+            var_range_color = [0,100]
+        elif pilihan_dimensi == 'WIND-SPEED AT 10M':
+            var_dimensi = 'vs'
+            var_color = 'dense'
+            var_range_color = [0,100]
+
+    # st.write(indo_prov.columns)
     
     st.write('---')
 
@@ -91,8 +121,29 @@ def app():
         opacity=0.8,
         hover_name="district",
         height=500,
-        hover_data={'NDVI':True},
-        labels={'district':'District'}
+        hover_data={
+            'def':True,
+            'pdsi':True,
+            'pr':True,
+            'soil':True,
+            'swe':True,
+            'tmmn':True,
+            'tmmx':True,
+            'vap':True,
+            'vs':True
+            },
+        labels={'district':'DISTRICT',
+            'def':'CLIMATE WATER DEFICIT',
+            'pdsi':'PALMER DROUGHT SAVERITY INDEX',
+            'pr':'PRECIPITATION ACCUMULATION',
+            'soil':'SOIL MOISTURE',
+            'swe':'SNOW WATER EQUIVALENT',
+            'tmmn':'MINIMUM TEMPERATURE',
+            'tmmx':'MAXIMUM TEMPERATURE',
+            'vap':'VAPOR PRESSURE',
+            'vs':'WIND-SPEED AT 10M'
+            }
+
     )
     fig2.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
     # fig2.update_layout({'plot_bgcolor': '#2c2f38', 'paper_bgcolor': '#2c2f38'})

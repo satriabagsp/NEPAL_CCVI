@@ -110,7 +110,7 @@ def app():
 
     # cn1.subheader('VULNERABILITY INDEX')
     cn1.plotly_chart(fig_gauge, use_container_width=True)
-    cn1.markdown("<h5 style='text-align: center; color: black;'>VULNERABILITY INDEX</h1>", unsafe_allow_html=True)
+    cn1.markdown("<h5 style='text-align: center; color: white;'>VULNERABILITY INDEX</h1>", unsafe_allow_html=True)
 
     # Metric INDEKS 1
     lnk = '<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">'
