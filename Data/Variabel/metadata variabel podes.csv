@@ -1,0 +1,29 @@
+variabel_code;penjelasan;satuan;min;max;aspek;catatan
+persen_desa_akses;persen desa dengan akses jalan darat;persen;0;100;Infrastruktur;PODES 2021
+persen_desa_jenis_jln;persen desa dengan jenis jalan beton/aspal;persen;0;100;Infrastruktur;PODES 2021
+persen_desa_kondisi;persen desa dengan jalan dapat dilalui sepanjang tahun oleh roda 4;persen;0;100;Infrastruktur;PODES 2021
+more_sma;persentase penduduk ijasah SMA ke atas;persen;0;100;Karakteristik Penduduk;
+yes_working;persentase penduduk yang bekerja di pertanian;persen;0;100;Karakteristik Penduduk;
+own_tel_rumah;persen RT yang memiliki telpon rumah;persen;0;100;Karakteristik Penduduk;
+persen_kec_puskes_kumham;persentase kecamatan dengan puskesmas > 1:16000;persen;0;100;Kesehatan;"permenkumham 34 tahun 2016
+PODES 2018"
+persen_puskespem_kumham;persentase desa dengan puskesmas pembantu  > 1:1500;persen;0;100;Kesehatan;"permenkumham 34 tahun 2016
+PODES 2018"
+persen_faskes_kumham;persentase desa dengan faskes > 1:1500;persen;0;100;Kesehatan;"permenkumham 34 tahun 2016
+PODES 2018"
+persen_desa_dokter_kumham;persentase desa yang memiliki rasio dokter > 1:2500 populasi;persen;0;100;Kesehatan;"permenkumham 34 tahun 2016
+PODES 2018"
+persen_desa_nakes_kumham;persentase desa yang memiliki rasio nakes  > 1:855 populasi;persen;0;100;Kesehatan;"permenkumham 34 tahun 2016
+PODES 2018"
+persen_desa_bidan_kumham;persentase desa yang memiliki rasio bidan > 1:1000 populasi;persen;0;100;Kesehatan;"permenkumham 34 tahun 2016
+PODES 2018"
+own_asuransi;persentase penduduk yang memiliki asuransi;persen;0;100;Keuangan;
+yes_norek;persentase penduduk yang memiliki norek;persen;0;100;Keuangan;
+ada_kredit;persen RT yang memiliki kredit;persen;0;100;Keuangan;
+persen_desa_bankpem;persentase desa yang memiliki bank pemerintah;persen;0;100;Keuangan;PODES 2021
+persen_desa_bankswasta;persentase desa yang memiliki bank swasta;persen;0;100;Keuangan;PODES 2021
+persen_desa_mitigasi;persentase desa yang memiliki mitigasi bencana;persen;0;100;Mitigasi bencana;PODES 2021
+use_inet;persentase penduduk pengguna internet;persen;0;100;TI;
+own_ponsel;persentase penduduk yang memiliki ponsel;persen;0;100;TI;
+persen_desa_internet;persentase desa dengan internet untuk warnet dan fasum;persen;0;100;TI;PODES 2021
+persen_desa_sinyal;persentase desa dengan internet 3G atau lebih;persen;0;100;TI;PODES 2021
