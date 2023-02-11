@@ -56,7 +56,7 @@ def app():
         zoom = 12.7 - np.log(max_bound)
 
     with pil_c3:
-        pilihan_dimensi = st.selectbox('Select Dimension.', ['CLIMATE WATER DEFICIT',
+        pilihan_dimensi = st.selectbox('Select Climate Condition.', ['CLIMATE WATER DEFICIT',
             'PALMER DROUGHT SAVERITY INDEX',
             'PRECIPITATION ACCUMULATION',
             'SOIL MOISTURE',

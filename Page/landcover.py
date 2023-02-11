@@ -56,7 +56,7 @@ def app():
         zoom = 12.7 - np.log(max_bound)
 
     with pil_c3:
-        pilihan_dimensi = st.selectbox('Select Dimension.', ['NDVI'])
+        pilihan_dimensi = st.selectbox('Select Landcover Dimension.', ['NDVI'])
         if pilihan_dimensi == 'NDVI':
             var_dimensi = 'NDVI'
             var_color = 'Haline'
