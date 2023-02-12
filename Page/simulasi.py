@@ -15,7 +15,7 @@ def app():
 
     st.write('On this page you can simulate the calculation of the Adaptive Index based on the percentage of the budget that forms it in the selected area. There are three types of budgets that you can adjust, including the Health Budget, the Waste Budget, and the Environment Budget. Please select the district that you want to simulate in the fields below.')
 
-    indo = pd.read_csv('Nepal Data\Hasil CatBoost.csv', sep=';')
+    indo = pd.read_csv('Nepal Data/Hasil CatBoost.csv', sep=';')
 
     pil_c1, pil_c2 = st.columns(2)
 
