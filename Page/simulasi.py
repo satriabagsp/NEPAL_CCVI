@@ -11,60 +11,63 @@ import pickle
 import func
 
 def app():
-    st.title('Simulasi')
+    st.title('Simulation')
 
-    st.write('Pada halaman ini anda dapat melakukan simulasi penghitungan Adapative Index berdasarkan persentase anggaran pembentuknya di wilayah yang dipilih. Terdapat tiga tipe anggaran yang dapat \
-        anda sesuaikan, antara lain Anggaran Kesehatan, Anggaran Sampah, dan Anggaran Lingkungan Hidup. Silakan pilih kabupaten/kota yang ingin anda simulasikan pada isian di bawah.')
+    st.write('On this page you can simulate the calculation of the Adaptive Index based on the percentage of the budget that forms it in the selected area. There are three types of budgets that you can adjust, including the Health Budget, the Waste Budget, and the Environment Budget. Please select the district that you want to simulate in the fields below.')
 
-    indo = pd.read_csv('Data/Hasil Cat Boost.csv', sep=';')
+    indo = pd.read_csv('Nepal Data\Hasil CatBoost.csv', sep=';')
 
     pil_c1, pil_c2 = st.columns(2)
 
     with pil_c1:
         pilihan_provinsi = st.selectbox(
-            'Pilih Provinsi.', indo.nmprov.unique(), index=10)
+            'Select Province.', indo.province.unique(), index=2)
 
-        indo_prov = indo[indo.nmprov == pilihan_provinsi]
+        indo_prov = indo[indo.province == pilihan_provinsi]
 
         # Pilih Provinsi
         if pilihan_provinsi == 'SEMUA':
             indo_prov = indo
         else:
-            indo_prov = indo[indo.nmprov == pilihan_provinsi]
+            indo_prov = indo[indo.province == pilihan_provinsi]
         
     with pil_c2:
         pilihan_kabkota = st.selectbox(
-            'Pilih Kabupaten/kota.', indo_prov.nmkab.to_list())
+            'Select District.', indo_prov.district.to_list(), index=7)
 
     
     st.write('---')
     
     # Pilih Kabkota
     if pilihan_kabkota:
-        indo_prov = indo_prov[indo_prov.nmkab == pilihan_kabkota].reset_index(drop=True)
+        indo_prov = indo_prov[indo_prov.district == pilihan_kabkota].reset_index(drop=True)
 
-        st.subheader('Prediksi Adaptive Score')
+        st.subheader('Adaptive Score Prediction')
 
-        st.text('Silakan isikan atau ubah nilai persentase masing-masing anggaran kemudian tekan tombol "Prediksi" untuk melihat nilai prediksi skor adaptif.')
+        st.text('Please enter or change the percentage value for each budget then press the "Prediction" button to see the adaptive score prediction value.')
 
         c1, c2 = st.columns(2)
 
         with c1:
-            # bencana = st.text_input('Persentase Anggaran Bencana (%)', round(indo_prov.persen_anggaran_bencana[0], 4))
-            kesehatan = st.text_input('Persentase Anggaran Kesehatan (%)', round(indo_prov.persen_anggaran_kesehatan[0], 4))
-            # pangan = st.text_input('Persentase Anggaran Pangan (%)', round(indo_prov.persen_anggaran_pangan[0], 4))
-            sampah = st.text_input('Persentase Anggaran Sampah (%)', round(indo_prov.persen_anggaran_sampah[0], 4))
-            lingkungan_hidup = st.text_input('Persentase Anggaran Lingkungan Hidup (%)', round(indo_prov.persen_anggaran_lh[0], 4))
+            bencana = st.text_input('Disaster Budget (%)', round(indo_prov['Disaster Budget (%)'][0], 4))
+            kesehatan = st.text_input('Health Budget (%)', round(indo_prov['Health Budget (%)'][0], 4))
+            pangan = st.text_input('Food Budget (%)', round(indo_prov['Food Budget (%)'][0], 4))
+            sampah = st.text_input('Garbage Budget (%)', round(indo_prov['Garbage Budget (%)'][0], 4))
+            lingkungan_hidup = st.text_input('Environment Budget (%)', round(indo_prov['Environment Budget (%)'][0], 4))
 
-            prediksi_button = st.button('Prediksi')
+            prediksi_button = st.button('Predictions')
             # reset_button = st.button('Reset')
 
         with c2:
             # if reset_button:
             #     pyautogui.hotkey("ctrl","F5")
 
+            st.write('')
+            st.write('')
+            st.write('')
+
             if prediksi_button:
-                list_nilai = [float(kesehatan), float(sampah), float(lingkungan_hidup)]
+                list_nilai = [float(bencana), float(kesehatan), float(pangan), float(sampah), float(lingkungan_hidup)]
 
                 # PREDIKSI
                 nilai_prediksi = float(func.prediksi_adaptive(list_nilai))
@@ -73,8 +76,8 @@ def app():
                     domain = {'x': [0, 1], 'y': [0, 1]},
                     value = round(nilai_prediksi, 4),
                     mode = "gauge+number+delta",
-                    title = {'text': "PREDIKSI ADAPTIVE SCORE"},
-                    delta = {'reference': round(indo_prov.adap_score_hat[0], 4), 'increasing': {'color': "RebeccaPurple"}},
+                    title = {'text': "ADAPTIVE SCORE PREDICTION"},
+                    delta = {'reference': round(indo_prov['Adaptive Index Pred'][0], 4), 'increasing': {'color': "RebeccaPurple"}},
                     gauge = {'axis': {'range': [0, 100]},
                             'steps' : [
                                 {'range': [0, 33], 'color': "#e27e40"},
@@ -85,7 +88,7 @@ def app():
                     )
 
                 pred_gauge.update_layout(
-                    height=300,
+                    height=350,
                     margin=go.layout.Margin(
                         l=50, #left margin
                         r=50, #right margin
@@ -99,7 +102,7 @@ def app():
             else:
                 pred_gauge = go.Figure(go.Indicator(
                     domain = {'x': [0, 1], 'y': [0, 1]},
-                    value = round(indo_prov.adap_score_hat[0], 4),
+                    value = round(indo_prov['Adaptive Index Pred'][0], 4),
                     mode = "gauge+number",
                     title = {'text': "ADAPTIVE SCORE"},
                     gauge = {'axis': {'range': [0, 100]},
@@ -112,7 +115,7 @@ def app():
                     )
 
                 pred_gauge.update_layout(
-                    height=300,
+                    height=350,
                     margin=go.layout.Margin(
                         l=50, #left margin
                         r=50, #right margin
