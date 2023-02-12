@@ -51,11 +51,14 @@ def app():
             dimensi_adaptive.pop('province')
             dimensi_adaptive = dimensi_adaptive.melt(id_vars=['district'])
             dimensi_adaptive = dimensi_adaptive.dropna()
+            dimensi_adaptive['value'] = dimensi_adaptive['value'].str.replace(',','.').astype(float)
 
             # Melt Pembanding
             dimensi_adaptive_pembanding.pop('province')
             dimensi_adaptive_pembanding = dimensi_adaptive_pembanding.melt(id_vars=['district'])
             dimensi_adaptive_pembanding = dimensi_adaptive_pembanding.dropna()
+            dimensi_adaptive_pembanding['value'] = dimensi_adaptive_pembanding['value'].str.replace(',','.').astype(float)
+
 
             with pil_c2:
                 # Plot Spider
@@ -106,11 +109,13 @@ def app():
             dimensi_exposure.pop('province')
             dimensi_exposure = dimensi_exposure.melt(id_vars=['district'])
             dimensi_exposure = dimensi_exposure.dropna()
+            dimensi_exposure['value'] = dimensi_exposure['value'].str.replace(',','.').astype(float)
 
             # Melt Pembanding
             dimensi_exposure_pembanding.pop('province')
             dimensi_exposure_pembanding = dimensi_exposure_pembanding.melt(id_vars=['district'])
             dimensi_exposure_pembanding = dimensi_exposure_pembanding.dropna()
+            dimensi_exposure_pembanding['value'] = dimensi_exposure_pembanding['value'].str.replace(',','.').astype(float)
 
             with pil_c2:
                 # Plot Spider
@@ -148,13 +153,13 @@ def app():
 
         elif pilihan_dimensi == 'SENSITIVITY':
             # DF Origin
-            dimensi_sensitivity = pd.read_csv('Nepal Data/Variable/SENSITIVITY.csv')
+            dimensi_sensitivity = pd.read_csv('Nepal Data/Variable/SENSITIVITY.csv', sep=';')
             dimensi_sensitivity = dimensi_sensitivity[dimensi_sensitivity['district'] == pilihan_kabkota.title()]
 
             # Df pembanding
-            dimensi_sensitivity_pembanding = pd.read_csv('Nepal Data/Variable/SENSITIVITY.csv')
+            dimensi_sensitivity_pembanding = pd.read_csv('Nepal Data/Variable/SENSITIVITY.csv', sep=';')
             dimensi_sensitivity_pembanding = dimensi_sensitivity_pembanding[dimensi_sensitivity_pembanding['district'] == pilihan_kabkota_pembanding.title()]
-
+            
             # Melt
             dimensi_sensitivity.pop('province')
             dimensi_sensitivity = dimensi_sensitivity.melt(id_vars=['district'])
@@ -164,6 +169,9 @@ def app():
             dimensi_sensitivity_pembanding.pop('province')
             dimensi_sensitivity_pembanding = dimensi_sensitivity_pembanding.melt(id_vars=['district'])
             dimensi_sensitivity_pembanding = dimensi_sensitivity_pembanding.dropna()
+            
+
+            
 
             with pil_c2:
                 # Plot Spider
