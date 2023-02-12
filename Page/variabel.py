@@ -40,11 +40,11 @@ def app():
         pilihan_dimensi = st.selectbox('Select Dimension:', ['ADAPTIVE', 'EXPOSURE', 'SENSITIVITY'])
         if pilihan_dimensi == 'ADAPTIVE':
             # DF Origin
-            dimensi_adaptive = pd.read_csv('Nepal Data\Variable\ADAPTIVITY.csv')
+            dimensi_adaptive = pd.read_csv('Nepal Data/Variable/ADAPTIVITY.csv')
             dimensi_adaptive = dimensi_adaptive[dimensi_adaptive['district'] == pilihan_kabkota.title()]
 
             # DF Pembanding
-            dimensi_adaptive_pembanding = pd.read_csv('Nepal Data\Variable\ADAPTIVITY.csv')
+            dimensi_adaptive_pembanding = pd.read_csv('Nepal Data/Variable/ADAPTIVITY.csv')
             dimensi_adaptive_pembanding = dimensi_adaptive_pembanding[dimensi_adaptive_pembanding['district'] == pilihan_kabkota_pembanding.title()]
 
             # Melt
