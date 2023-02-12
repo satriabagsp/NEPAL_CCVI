@@ -3,7 +3,7 @@ from numpy import asarray
 from xgboost import XGBRegressor
 
 # Load model
-model = pickle.load(open('Model Nepal\CatBoost.sav', 'rb'))
+model = pickle.load(open('Model Nepal/CatBoost.sav', 'rb'))
 
 # Fungsi membuat kolom hasil prediksi Random Forest
 def prediksi_adaptive(list_nilai):
