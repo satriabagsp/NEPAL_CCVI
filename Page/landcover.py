@@ -13,9 +13,9 @@ import plotly.graph_objects as go
 def app():
     st.title('Nepal Landcover')
 
-    st.write('On this page you can see a distribution map of the land cover index of the selected provinces. \
-            Please select the province, district, and land cover dimensions that you would like to see in the fields below. You can also see the comparability of the values of each variable in the forming dimensions \
-            in the selected region.')
+    st.write('On this page you can see a map of the distribution of the land cover index in a 5km grid in the selected provinces. \
+              Please select the province, district, and land cover dimensions that you would like to see in the fields below. You can also see the comparability of the values of each variable in the forming dimensions \
+              in the selected region.')
 
 
     indo = gpd.read_file('SHP NEPAL/Nepal LC Grid/LANDCOVER DISTRICT NEPAL GRID.shp')
